@@ -1,4 +1,5 @@
 public class Player{
+  //Represents the data 
   private int x;
   private int y;
   public Player(String grid, int height, int width){
@@ -16,15 +17,18 @@ public class Player{
   public int getY(){
     return this.y;
   }
-  public void move(String command){
+  public String move(String command){
+    int deltaX = 0;
+    int deltaY = 0;
     if(command.equals("w")){
-      this.x--;
+      deltaX = -1; deltaY = 0;
     }else if(command.equals("a")){
-      this.y--;
+      deltaX = 0; deltaY = -1;
     }else if(command.equals("s")){
-      this.x++;
+      deltaX = 1; deltaY = 0;
     }else if(command.equals("d")){
-      this.y++;
+      deltaX = 0; deltaY = 1;
     }
+    return this.x + "" + this.y  + "" + deltaX + "" + deltaY; 
   }
 }

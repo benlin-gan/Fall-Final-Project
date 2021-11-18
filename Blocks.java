@@ -42,18 +42,12 @@ public class Blocks{
       //System.out.println();
     }
   }
-  private String getBlockProperties(int x, int y){
-    //look in all three string arrays to determine the properties
-    //of the block at coordinates (x, y);
-    int i = getUnifiedIndex(x, y);
-    return blocking.substring(i, i + 1) + moveable.substring(i, i+1) + destination.substring(i, i+1);
-  }
   public String getBlockDisplay(int x, int y){
-    String properties = getBlockProperties(x, y);
+    int i = getUnifiedIndex(x, y);
     //given the properties of a block, return a unicode character to display;
-    boolean blocking = properties.substring(0, 1).equals("1");
-    boolean moveable = properties.substring(1, 2).equals("1");
-    boolean destination = properties.substring(2, 3).equals("1");
+    boolean blocking = this.blocking.substring(i, i+1).equals("1");
+    boolean moveable = this.moveable.substring(i, i+1).equals("1");
+    boolean destination = this.destination.substring(i, i+1).equals("1");
     if(blocking && moveable){
       return "\u2327"; //box
     }else if(blocking && !moveable){
@@ -69,5 +63,21 @@ public class Blocks{
   }
   public int getHeight(){
     return this.height;
+  }
+  public boolean checkValidMovement(int oldX, int oldY, int deltaX, int deltaY){
+    int newC = getUnifiedIndex(oldX + deltaX, oldY + deltaY);
+    if(blocking.substring(newC, newC+1).equals("0")){
+      return true;
+    }else if(moveable.substring(newC, newC+1).equals("1")){
+      int farC = getUnifiedIndex(oldX + deltaX + deltaX, oldY + deltaY + deltaY);
+      if(blocking.substring(farC, farC+1).equals("0")){
+        blocking = Util.swapSubstringsAtIndexes(blocking, newC, newC+1, farC, farC+1);
+        moveable = Util.swapSubstringsAtIndexes(moveable, newC, newC+1, farC, farC+1);
+        return true;
+      }
+      return false;
+    }else{
+      return false;
+    }
   }
 }
