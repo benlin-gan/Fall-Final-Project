@@ -2,7 +2,7 @@ import java.util.Scanner;
 class Main {
   public static void main(String[] args) {
     Scanner stdin = new Scanner(System.in);
-    Frame f = new Frame(new Player(3, 1), new Blocks("level1.txt"));
+    Frame f = new Frame("level1.txt");
     Prompt p = new Prompt();
     while (true){
       System.out.print("\033[H\033[2J");  
