@@ -1,7 +1,7 @@
 public class Blocks{
-  private int width;
+  private int width; 
   private int height;
-  private String blocking;
+  private String blocking; 
   private String moveable;
   private String destination;
   private int getUnifiedIndex(int x, int y){
@@ -20,24 +20,28 @@ public class Blocks{
       for(int j = 0; j < this.width; j++){
         int k = getUnifiedIndex(i, j);
         String curr = grid.substring(k, k+1);
-        //System.out.print(curr);
         if(curr.equals("b")){
+          //a box that blocks movement, is moveable, and is not on a destination 
           blocking += "1";
           moveable += "1";
           destination += "0";
         }else if(curr.equals("x")){
+          //a wall that blocks movement, is not moveable, and is not a destination
           blocking += "1";
           moveable += "0";
           destination += "0";
         }else if(curr.equals("o")){
+          //A destination that currently has no box on it
           blocking += "0";
           moveable += "0";
           destination += "1";
         }else if(curr.equals("d")){
+          //a moveable box that blocks movement and happens to already be on a destination
           blocking += "1";
           moveable += "1";
           destination += "1";
         }else{
+          //empty space does not block movement, is nto moveable, and is not a destination
           blocking += "0";
           moveable += "0";
           destination += "0";
@@ -47,8 +51,8 @@ public class Blocks{
     }
   }
   public String getBlockDisplay(int x, int y){
+    //given the coordinates of a block return a unicode character to display;
     int i = getUnifiedIndex(x, y);
-    //given the properties of a block, return a unicode character to display;
     boolean blocking = this.blocking.substring(i, i+1).equals("1");
     boolean moveable = this.moveable.substring(i, i+1).equals("1");
     boolean destination = this.destination.substring(i, i+1).equals("1");
