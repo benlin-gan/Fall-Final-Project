@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 public class Frame{
   //Handles the compositing of data from Player, Blocks, and user input in order
-  //to update and 
+  //to update and display the graphics.
   private Player player;
   private Blocks blocks;
   public Frame(String path){
@@ -27,7 +27,14 @@ public class Frame{
     return this.player;
   }
   public void prepareNextFrame(String command){
-    IntArray attemptedMove = player.attemptMove(command);
+    IntArray attemptedMove = this.player.attemptMove(command);
+    int oldX = attemptedMove.at(0);
+    int oldY = attemptedMove.at(1);
+    int deltaX = attemptedMove.at(2);
+    int deltaY = attemptedMove.at(3);
+    if (this.blocks.checkValidMovement(oldX, oldY, deltaX, deltaY)){
+      player.move(deltaX, deltaY);
+    }
   }
   @Override
   public String toString() {

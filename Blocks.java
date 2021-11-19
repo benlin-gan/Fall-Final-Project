@@ -65,6 +65,7 @@ public class Blocks{
     return this.height;
   }
   public boolean checkValidMovement(int oldX, int oldY, int deltaX, int deltaY){
+    //System.out.println(oldX + " " + oldY + " " + deltaX + " " + deltaY);
     int newC = getUnifiedIndex(oldX + deltaX, oldY + deltaY);
     if(blocking.substring(newC, newC+1).equals("0")){
       return true;

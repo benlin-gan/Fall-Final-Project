@@ -21,6 +21,9 @@ public class IntArray{
         out += curr;
       }
     }
-    return 42; 
+    if (out.length() > 0) {
+      return Integer.parseInt(out);
+    }
+    return 42; //returns if index out of bounds;
   }
 }

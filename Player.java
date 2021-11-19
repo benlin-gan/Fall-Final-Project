@@ -11,12 +11,6 @@ public class Player{
   public String toString() {
     return "x";
   }
-  public int getX(){
-    return this.x;
-  }
-  public int getY(){
-    return this.y;
-  }
   public IntArray attemptMove(String command){
     int deltaX = 0;
     int deltaY = 0;
@@ -35,5 +29,15 @@ public class Player{
     attemptedMove.push(deltaX);
     attemptedMove.push(deltaY);
     return attemptedMove;
+  }
+  public void move(int deltaX, int deltaY){
+    this.x += deltaX;
+    this.y += deltaY;
+  }
+  public int getX() {
+    return this.x;
+  }
+  public int getY() {
+    return this.y;
   }
 }
