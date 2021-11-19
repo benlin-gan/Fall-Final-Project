@@ -1,8 +1,8 @@
 import java.util.Scanner;
 import java.io.File;
 public class Frame{
-  //Takes data from player & blocks, and translates it into a
-  //unicode display;
+  //Handles the compositing of data from Player, Blocks, and user input in order
+  //to update and 
   private Player player;
   private Blocks blocks;
   public Frame(String path){
@@ -25,6 +25,9 @@ public class Frame{
   }
   public Player getPlayer(){
     return this.player;
+  }
+  public void prepareNextFrame(String command){
+    IntArray attemptedMove = player.attemptMove(command);
   }
   @Override
   public String toString() {

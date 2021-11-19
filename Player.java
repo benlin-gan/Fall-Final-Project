@@ -17,9 +17,10 @@ public class Player{
   public int getY(){
     return this.y;
   }
-  public String move(String command){
+  public IntArray attemptMove(String command){
     int deltaX = 0;
     int deltaY = 0;
+    IntArray attemptedMove = new IntArray();
     if(command.equals("w")){
       deltaX = -1; deltaY = 0;
     }else if(command.equals("a")){
@@ -29,6 +30,10 @@ public class Player{
     }else if(command.equals("d")){
       deltaX = 0; deltaY = 1;
     }
-    return this.x + "" + this.y  + "" + deltaX + "" + deltaY; 
+    attemptedMove.push(this.x);
+    attemptedMove.push(this.y);
+    attemptedMove.push(deltaX);
+    attemptedMove.push(deltaY);
+    return attemptedMove;
   }
 }

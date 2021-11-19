@@ -12,7 +12,7 @@ class Main {
       System.out.println(p);
       String command = stdin.next();
       //System.out.print(command.trim());
-      f.getPlayer().move(command.trim());
+      f.prepareNextFrame(command.trim());
     }
     //stdin.close();
   }

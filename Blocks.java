@@ -73,7 +73,7 @@ public class Blocks{
       if(blocking.substring(farC, farC+1).equals("0")){
         blocking = Util.swapSubstringsAtIndexes(blocking, newC, newC+1, farC, farC+1);
         moveable = Util.swapSubstringsAtIndexes(moveable, newC, newC+1, farC, farC+1);
-        return true;
+      return true;
       }
       return false;
     }else{
