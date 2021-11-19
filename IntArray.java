@@ -1,4 +1,5 @@
 public class IntArray{
+  //wrapper around a string of a list of integers with O(N) access time;
   private String data;
   public static final String DELIMETER = ","; 
   public IntArray(){

@@ -33,6 +33,10 @@ public class Blocks{
           blocking += "0";
           moveable += "0";
           destination += "1";
+        }else if(curr.equals("d")){
+          blocking += "1";
+          moveable += "1";
+          destination += "1";
         }else{
           blocking += "0";
           moveable += "0";
