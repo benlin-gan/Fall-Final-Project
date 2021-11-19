@@ -9,7 +9,7 @@ public class Player{
   }
   @Override
   public String toString() {
-    return "x";
+    return "\u26d1 ";
   }
   public IntArray attemptMove(String command){
     int deltaX = 0;

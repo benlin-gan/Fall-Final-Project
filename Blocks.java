@@ -52,14 +52,16 @@ public class Blocks{
     boolean blocking = this.blocking.substring(i, i+1).equals("1");
     boolean moveable = this.moveable.substring(i, i+1).equals("1");
     boolean destination = this.destination.substring(i, i+1).equals("1");
-    if(blocking && moveable){
-      return "\u2327"; //box
+    if(blocking && moveable && !destination){
+      return "\u264a"; //gemini
+    }else if(blocking && moveable && destination){
+      return "\u2705"; //checkmark
     }else if(blocking && !moveable){
-      return "\u2593"; //wall
+      return "\u26dd "; //wall
     }else if(destination && !blocking && !moveable){
-      return "\u272a"; //star
+      return "\u26d4"; //one-way sign
     }else{
-      return " "; //empty space
+      return "  "; //empty space
     }
   }
   public int getWidth(){

@@ -19,17 +19,17 @@
     "Frame.java": [
       {
         "id": "5761e50d-4a57-4a1b-9102-12cce4d2f3ab",
-        "line": 43,
-        "version": 2455,
-        "index": 1329
+        "line": 53,
+        "version": 2865,
+        "index": 1723
       }
     ],
     "Main.java": [
       {
         "id": "6681cb55-b1cb-4da3-b85c-e0570bf0970f",
-        "line": 17,
-        "version": 836,
-        "index": 528
+        "line": 19,
+        "version": 1051,
+        "index": 607
       }
     ]
   }
