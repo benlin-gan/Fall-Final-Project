@@ -1,25 +1,46 @@
 import java.util.Scanner;
 public class Game {
   private int level;
+  private int maxLevel;
+  private boolean done;
   private Frame frame;
-  public Game() {
+  public Game(int maxLevel) {
     this.level = 1;
-    this.frame = new Frame("level" + level + ".txt");
+    this.maxLevel = maxLevel;
+    this.done = false;
+    this.frame = new Frame("level" + this.level + ".txt");
   }
   public void loop(){
-    while (true){
-      Scanner stdin = new Scanner(System.in);
-      System.out.print("\033[H\033[2J");  
-      System.out.flush(); 
-      System.out.println("SOKOBAN - Console Edition"); 
+    Scanner stdin = new Scanner(System.in);
+    while (!this.done){ 
+      clearScreen();
+      System.out.println("SOKOBAN - TTY Edition");
+      System.out.println("Level: " + this.level); 
       System.out.println(this.frame);
       System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]");
-      String command = stdin.next();
-      if(command.trim().equals("r")){
-        this.frame = new Frame("level" + level + ".txt");
+      if(this.frame.checkVictory()){
+        nextLevel();
+      }else{ 
+        String command = stdin.next();
+        if(command.trim().equals("r")){
+          this.frame = new Frame("level" + this.level + ".txt");
+        }
+        frame.prepareNextFrame(command.trim());
       }
-      frame.prepareNextFrame(command.trim());
     }
-    //stdin.close();
+    stdin.close();
+    clearScreen();
+    System.out.println("CONGRATULATIONS! YOU WIN!");
+  }
+  private void nextLevel(){
+    if(level < maxLevel){
+      this.frame = new Frame("level" + ++this.level + ".txt");
+    }else{
+      this.done = true;
+    }
+  }
+  private void clearScreen(){
+      System.out.print("\033[H\033[2J");  
+      System.out.flush();
   }
 }

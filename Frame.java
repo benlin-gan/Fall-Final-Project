@@ -51,4 +51,8 @@ public class Frame{
     }
     return out;
   }
+  public boolean checkVictory(){
+    //relays victory signal up;
+    return this.blocks.checkVictory();
+  }
 }

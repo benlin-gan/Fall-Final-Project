@@ -91,4 +91,14 @@ public class Blocks{
       return false;
     }
   }
+  public boolean checkVictory(){
+    for(int i = 0; i < destination.length(); i++){
+      if(this.destination.substring(i, i+1).equals("1")){
+        if(this.moveable.substring(i, i+1).equals("0") || this.blocking.substring(i, i+1).equals("0")){
+          return false;
+        }
+      } 
+    }
+    return true;
+  }
 }
