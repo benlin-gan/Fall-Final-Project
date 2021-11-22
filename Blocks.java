@@ -20,22 +20,23 @@ public class Blocks{
       for(int j = 0; j < this.width; j++){
         int k = getUnifiedIndex(i, j);
         String curr = grid.substring(k, k+1);
-        if(curr.equals("b")){
+        if(curr.equals("$")){
           //a box that blocks movement, is moveable, and is not on a destination 
           blocking += "1";
           moveable += "1";
           destination += "0";
-        }else if(curr.equals("x")){
+        }else if(curr.equals("#")){
           //a wall that blocks movement, is not moveable, and is not a destination
           blocking += "1";
           moveable += "0";
           destination += "0";
-        }else if(curr.equals("o")){
+        }else if(curr.equals(".") || curr.equals("+")){
           //A destination that currently has no box on it
+          //+ is if the player is also on it;
           blocking += "0";
           moveable += "0";
           destination += "1";
-        }else if(curr.equals("d")){
+        }else if(curr.equals("*")){
           //a moveable box that blocks movement and happens to already be on a destination
           blocking += "1";
           moveable += "1";

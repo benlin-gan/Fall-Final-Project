@@ -1,10 +1,10 @@
 9*8
-..xxxxx.
-xxx...x.
-xopb..x.
-xxx.box.
-xoxxb.x.
-x.x.o.xx
-xb.dbbox
-x...o..x
-xxxxxxxx
+  ##### 
+###   # 
+#.@$  # 
+### $.# 
+#.##$ # 
+# # . ##
+#$ *$$.#
+#   .  #
+########

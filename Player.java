@@ -4,7 +4,10 @@ public class Player{
   private int y;
   public Player(String grid, int height, int width){
     //find the index of the player on the grid and translate it into a coordinate;
-    int index = grid.indexOf("p");
+    int index = grid.indexOf("@");
+    if(index == -1){
+      index = grid.indexOf("+");
+    }
     this.x = index/height;
     this.y = index % width;
   }
