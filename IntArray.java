@@ -1,5 +1,6 @@
 public class IntArray{
-  //wrapper around a string of a list of integers with O(N) access time;
+  //"Array" of integers using a String as an allocator;
+  //Integers are stored as a string of ten characters;
   private String data;
   public IntArray(){
     this.data = "";
@@ -17,6 +18,7 @@ public class IntArray{
     }
     String init = "" + Math.abs(input);
     while(init.length() < 9){
+      //if it has less than 9 digits, pad it with zeroes;
       init = "0" + init;
     }
     return prefix + init;

@@ -20,11 +20,14 @@ public class Game {
       System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]");
       if(this.frame.checkVictory()){
         nextLevel();
-      }else{ 
+      }else{
+        //if no victory yet, ask for a command; 
         String command = stdin.next();
         if(command.trim().equals("r")){
+          //restarts the level, by restoring the level data from file;
           this.frame = new Frame("level" + this.level + ".txt");
         }
+        //using the command, update the frame;
         frame.prepareNextFrame(command.trim());
       }
     }
@@ -34,13 +37,17 @@ public class Game {
   }
   private void nextLevel(){
     if(level < maxLevel){
+      //generates next level if there is one
       this.frame = new Frame("level" + ++this.level + ".txt");
     }else{
+      //else signals for the loop to halt;
       this.done = true;
     }
   }
   private void clearScreen(){
-      System.out.print("\033[H\033[2J");  
-      System.out.flush();
+    //Uses ANSI escape codes to clear standard output
+    //taken from the Mastermind Lab
+    System.out.print("\033[H\033[2J");  
+    System.out.flush();
   }
 }

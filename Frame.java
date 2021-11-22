@@ -14,6 +14,7 @@ public class Frame{
       int height = Integer.parseInt(dimensions.substring(0,boundIndex));
       int width = Integer.parseInt(dimensions.substring(boundIndex + 1, dimensions.length()));
       String grid = "";
+      //read all lines but the first into the grid String
       while(f.hasNext()){
         grid += f.nextLine();
       }
@@ -27,6 +28,7 @@ public class Frame{
     return this.player;
   }
   public void prepareNextFrame(String command){
+    //Translate a movement command into a move;
     IntArray attemptedMove = this.player.attemptMove(command);
     int oldX = attemptedMove.at(0);
     int oldY = attemptedMove.at(1);
@@ -38,6 +40,7 @@ public class Frame{
   }
   @Override
   public String toString() {
+    //called to display the updated frame;
     String out = "";
     for(int i = 0; i < this.blocks.getHeight(); i++){
       for(int j = 0; j < this.blocks.getWidth(); j++){

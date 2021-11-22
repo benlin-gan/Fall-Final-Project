@@ -75,19 +75,24 @@ public class Blocks{
     return this.height;
   }
   public boolean checkValidMovement(int oldX, int oldY, int deltaX, int deltaY){
-    //System.out.println(oldX + " " + oldY + " " + deltaX + " " + deltaY);
     int newC = getUnifiedIndex(oldX + deltaX, oldY + deltaY);
     if(blocking.substring(newC, newC+1).equals("0")){
+      //if the new coordinates do not block, then movement is valid;
       return true;
     }else if(moveable.substring(newC, newC+1).equals("1")){
+      //if the new coordinates have a moveable box:
       int farC = getUnifiedIndex(oldX + deltaX + deltaX, oldY + deltaY + deltaY);
       if(blocking.substring(farC, farC+1).equals("0")){
+        //if the coordinates to where the block are going do not block, then movemnt is valid;
         blocking = Util.swapSubstringsAtIndexes(blocking, newC, newC+1, farC, farC+1);
         moveable = Util.swapSubstringsAtIndexes(moveable, newC, newC+1, farC, farC+1);
-      return true;
+        //swap the data at the old and new coordinates of the block;
+        return true;
       }
+      //if box is not moveable, than you also cannot move;
       return false;
     }else{
+      //in any other case, you cannot move;
       return false;
     }
   }
@@ -95,6 +100,8 @@ public class Blocks{
     for(int i = 0; i < destination.length(); i++){
       if(this.destination.substring(i, i+1).equals("1")){
         if(this.moveable.substring(i, i+1).equals("0") || this.blocking.substring(i, i+1).equals("0")){
+          //if any destination does not have a box on it, immediately halt the check and return false;
+          //There is no grid iteration here, it just goes through every character; newlines are ignored because of the first if statement;
           return false;
         }
       } 
