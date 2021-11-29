@@ -1,6 +1,8 @@
 public class IntArray{
   //"Array" of integers using a String as an allocator;
   //Integers are stored as a string of ten characters;
+  //one sign character, and a maximum of 9 digits
+  //maximum 32 bit integer is around 2 billion (9 digits);
   private String data;
   public IntArray(){
     this.data = "";
