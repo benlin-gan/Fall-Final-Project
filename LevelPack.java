@@ -29,8 +29,17 @@ public class LevelPack{
            "\nDescription: " + this.description +
            "\nCopyright: " + this.copyright;
   }
-  public String getLevel(){
-    return this.baseTag("Level");
+  public void getLevel(){
+    String data = this.baseTag("Level");
+    System.out.println(data);
+    String name = parseVariable(data,  "Id");
+    int columns = Integer.parseInt(parseVariable(data, "Width"));
+    int rows = Integer.parseInt(parseVariable(data,  "Height"));
+    System.out.println(name + " " +  columns + " " +  rows);
+    String grid = "";
+    for(int i = 0; i < rows; i++){
+      grid += data;
+    }
   }
   public String baseTag(String tagName){
     //returns the first subsection of the data which is wrapped in the tags specified by tagName;
@@ -47,10 +56,10 @@ public class LevelPack{
     return this.baseTag(tagName).substring(1);
   }
   public String parseVariable(String data, String variableName){
+    //given the name of a variable, return the string represenation of the data assigned to it in the XML file;
     int begin = data.indexOf(variableName) + variableName.length() + 2;
     //one character for the equal sign, one character for the quote;
     int end = data.indexOf("\"", begin);
-    this.location = end;
     return data.substring(begin, end);
   }
 } 
