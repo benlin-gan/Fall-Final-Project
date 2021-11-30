@@ -10,7 +10,7 @@ public class LevelPack{
         data += f.nextLine();
         data += '\n';
       }
-      this.title = data.substring(data.indexOf("<Title>") + "<Title>".length(), data.indexOf("</Title>"));
+      this.title = Util.inTag(data, "Title");
     }catch(Exception e){
       System.out.println("Error!");
     }  
@@ -18,6 +18,6 @@ public class LevelPack{
   @Override
   public String toString() {
     // TODO Auto-generated method stub
-    return this.title;
+    return "Level Pack: " + this.title;
   }
 } 
