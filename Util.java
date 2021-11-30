@@ -33,6 +33,7 @@ public class Util{
   }
   public static String parseVariable(String data, String variableName){
     int begin = data.indexOf(variableName) + variableName.length() + 2;
+    //one character for the equal sign, one character for the quote;
     int end = data.indexOf("\"", begin);
     return data.substring(begin, end);
   }
