@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 public class LevelPack{
   private String title;
+  private String description;
   public LevelPack(String path){
     try{
       Scanner f = new Scanner(new File(path));
@@ -10,7 +11,8 @@ public class LevelPack{
         data += f.nextLine();
         data += '\n';
       }
-      this.title = Util.inTag(data, "Title");
+      this.title = Util.simpleTag(data, "Title");
+      this.description = Util.simpleTag(data, "Description").strip();
     }catch(Exception e){
       System.out.println("Error!");
     }  
@@ -18,6 +20,6 @@ public class LevelPack{
   @Override
   public String toString() {
     // TODO Auto-generated method stub
-    return "Level Pack: " + this.title;
+    return "Level Pack: " + this.title + "\nDescription: " + this.description;
   }
 } 

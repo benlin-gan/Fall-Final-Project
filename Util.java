@@ -20,7 +20,7 @@ public class Util{
     return prefix + sub2 + infix + sub1 + postfix; 
     //sub2 swapped with sub1;
   }
-  public static String inTag(String data, String tagName){
+  public static String simpleTag(String data, String tagName){
     //returns the first subsection of the data which is wrapped in the tags specified by tagName;
     String openingTag = "<" + tagName + ">";
     String closingTag = "</" + tagName + ">";
