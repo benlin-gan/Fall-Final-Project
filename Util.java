@@ -20,21 +20,5 @@ public class Util{
     return prefix + sub2 + infix + sub1 + postfix; 
     //sub2 swapped with sub1;
   }
-  public static String baseTag(String data, String tagName){
-    //returns the first subsection of the data which is wrapped in the tags specified by tagName;
-    String openingTag = "<" + tagName + "";
-    String closingTag = "</" + tagName + ">";
-    return data.substring(data.indexOf(openingTag) + openingTag.length(), data.indexOf(closingTag));
-  }
-  public static String simpleTag(String data, String tagName){
-    //A "simpleTag" is a tag with no variables
-    //ie: <tagName>[CONTENT]</tagName>
-    return baseTag(data, tagName).substring(1);
-  }
-  public static String parseVariable(String data, String variableName){
-    int begin = data.indexOf(variableName) + variableName.length() + 2;
-    //one character for the equal sign, one character for the quote;
-    int end = data.indexOf("\"", begin);
-    return data.substring(begin, end);
-  }
+
 }
