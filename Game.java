@@ -1,22 +1,21 @@
 import java.util.Scanner;
 public class Game {
   //represents a Game;
-  private int level;
-  private int maxLevel;
   private boolean done;
   private Frame frame;
-  public Game(int maxLevel) {
-    this.level = 1;
-    this.maxLevel = maxLevel;
+  private LevelPack collection;
+  public Game(String path) {
+    this.collection = new LevelPack(path);
     this.done = false;
-    this.frame = new Frame("level" + this.level + ".txt");
+
+    this.frame = new Frame(this.collection.nextLevel());
   }
   public void loop(){
     Scanner stdin = new Scanner(System.in);
     while (!this.done){ 
       clearScreen();
       System.out.println("SOKOBAN - TTY Edition");
-      System.out.println("Level: " + this.level); 
+      System.out.println(collection.getMetadata()); 
       System.out.println(this.frame);
       System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]");
       if(this.frame.checkVictory()){
@@ -26,7 +25,7 @@ public class Game {
         String command = stdin.next();
         if(command.trim().equals("r")){
           //restarts the level, by restoring the level data from file;
-          this.frame = new Frame("level" + this.level + ".txt");
+          //this.frame = new Frame("level" + this.level + ".txt");
         }
         //using the command, update the frame;
         frame.prepareNextFrame(command.trim());
@@ -37,12 +36,11 @@ public class Game {
     System.out.println("CONGRATULATIONS! YOU WIN!");
   }
   private void nextLevel(){
-    if(level < maxLevel){
-      //generates next level if there is one
-      this.frame = new Frame("level" + ++this.level + ".txt");
-    }else{
-      //else signals for the loop to halt;
+    Tag newLevel = this.collection.nextLevel();
+    if(newLevel == null){
       this.done = true;
+    }else{
+      frame = new Frame(newLevel);
     }
   }
   private void clearScreen(){

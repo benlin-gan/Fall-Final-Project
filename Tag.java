@@ -18,7 +18,10 @@ public class Tag{
     String openingTag = "<" + tagName;
     String closingTag = "</" + tagName + ">";
     int begin = this.body.indexOf(openingTag, location);
-    this.location = begin; 
+    this.location = begin;
+    if(begin == -1){
+      return null;
+    } 
     int end = this.body.indexOf(closingTag, location) + closingTag.length();
     this.location = end;
     return new Tag(this.body.substring(begin, end), tagName);
@@ -26,6 +29,9 @@ public class Tag{
   @Override
   public String toString(){
     return this.name + ": " + this.body + "\n";
+  }
+  public String getBody(){
+    return this.body;
   }
   private int getFooterStart(String raw){
     for(int i = raw.length(); i > 0; i--){

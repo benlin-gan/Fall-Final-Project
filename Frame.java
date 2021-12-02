@@ -5,24 +5,17 @@ public class Frame{
   //to update and display the graphics of a level.
   private Player player;
   private Blocks blocks;
-  public Frame(String path){
-    //File IO code copied from the consumer review lab 
-    try{
-      Scanner f = new Scanner(new File(path));
-      String dimensions = f.nextLine();
-      int boundIndex = dimensions.indexOf("*");
-      int height = Integer.parseInt(dimensions.substring(0,boundIndex));
-      int width = Integer.parseInt(dimensions.substring(boundIndex + 1, dimensions.length()));
-      String grid = "";
-      //read all lines but the first into the grid String
-      while(f.hasNext()){
-        grid += f.nextLine();
-      }
-      this.blocks = new Blocks(grid, height, width);
-      this.player = new Player(grid, height, width);
-    }catch(Exception e){
-      System.out.println("Error!");
+  public Frame(Tag level){
+    int height = Integer.parseInt(level.parseVariable("Height"));
+    int width = Integer.parseInt(level.parseVariable("Width"));
+    String grid = "";
+    for(int i = 0; i < height; i++){
+      grid += level.nextChildTag("L").getBody();
+      grid += '\n';
     }
+    System.out.println(grid);
+    this.blocks = new Blocks(grid, height, width);
+    this.player = new Player(grid, height, width);
   }
   public Player getPlayer(){
     return this.player;

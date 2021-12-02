@@ -27,8 +27,7 @@ public class LevelPack{
     }
     
   }
-  @Override
-  public String toString(){
+  public String getMetadata(){
     return this.title + this.description + "\nCopyright: " + this.copyright;
   }
   public Tag nextLevel(){
