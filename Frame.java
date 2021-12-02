@@ -1,5 +1,3 @@
-import java.util.Scanner;
-import java.io.File;
 public class Frame{
   //Handles the compositing of data from Player, Blocks, and user input in order
   //to update and display the graphics of a level.
@@ -10,10 +8,8 @@ public class Frame{
     int width = Integer.parseInt(level.parseVariable("Width"));
     String grid = "";
     for(int i = 0; i < height; i++){
-      grid += level.nextChildTag("L").getBody();
-      grid += '\n';
+      grid += level.nextChildTag("L").getBody().strip();
     }
-    System.out.println(grid);
     this.blocks = new Blocks(grid, height, width);
     this.player = new Player(grid, height, width);
   }

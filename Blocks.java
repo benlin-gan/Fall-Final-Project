@@ -16,10 +16,12 @@ public class Blocks{
     this.moveable = "";
     this.destination = "";
     //Today I learned that java implictly casts null into "null" when you concatenate a String to it;
+    //System.out.println(grid.length());
     for(int i = 0; i < this.height; i++){
       for(int j = 0; j < this.width; j++){
         int k = getUnifiedIndex(i, j);
         String curr = grid.substring(k, k+1);
+        //System.out.print(curr);
         if(curr.equals("$")){
           //a box that blocks movement, is moveable, and is not on a destination 
           blocking += "1";
