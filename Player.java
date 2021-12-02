@@ -2,6 +2,8 @@ public class Player{
   //Represents the data associated with the player's avatar 
   private int x;
   private int y;
+  private int originalX;
+  private int originalY;
   public Player(String grid, int height, int width){
     //find the index of the player on the grid and translate it into a coordinate;
     int index = grid.indexOf("@");
@@ -10,10 +12,17 @@ public class Player{
     }
     this.x = index/height;
     this.y = index % width;
+    this.originalX = this.x;
+    this.originalY = this.y;
   }
   @Override
   public String toString() {
     return "\u26d1 "; //unicode road (looks like a person witha hardhat)
+  }
+  public void restart(){
+    //mutator method resetting player to original location;
+    this.x = this.originalX;
+    this.y = this.originalY;
   }
   public IntArray attemptMove(String command){
     //accessor method that generates the representation of a move command

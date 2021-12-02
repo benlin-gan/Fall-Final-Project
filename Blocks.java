@@ -4,6 +4,7 @@ public class Blocks{
   private String blocking; 
   private String moveable;
   private String destination;
+  private String originalState;
   private int getUnifiedIndex(int x, int y){
     //function that converts a coordinate pair into a single integer
     //representing the index of the String we actually want;
@@ -12,6 +13,13 @@ public class Blocks{
   public Blocks (String grid, int height, int width){   
     this.height = height;
     this.width = width;
+    this.originalState = grid;
+    initializeGrid(grid);
+  }
+  public void restart(){
+    initializeGrid(this.originalState);
+  }
+  private void initializeGrid(String grid){
     this.blocking = "";
     this.moveable = "";
     this.destination = "";

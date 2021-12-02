@@ -25,10 +25,10 @@ public class Game {
         String command = stdin.next();
         if(command.trim().equals("r")){
           //restarts the level, by restoring the level data from file;
-          //this.frame = new Frame("level" + this.level + ".txt");
+          this.frame.restart();
         }
         //using the command, update the frame;
-        frame.prepareNextFrame(command.trim());
+        this.frame.prepareNextFrame(command.trim());
       }
     }
     stdin.close();
