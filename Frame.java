@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 public class Frame{
   //Handles the compositing of data from Player, Blocks, and user input in order
-  //to update and display the graphics.
+  //to update and display the graphics of a level.
   private Player player;
   private Blocks blocks;
   public Frame(String path){

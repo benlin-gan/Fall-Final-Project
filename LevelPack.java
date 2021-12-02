@@ -2,10 +2,10 @@ import java.util.Scanner;
 import java.io.File;
 public class LevelPack{
   private Tag global; //Aka "SokobanLevels", outermost tag that wraps all others;
+  private Tag collection; //Aka "LevelCollection", immediate parent tag of all the levels;
   private String title;
   private String description;
   private String copyright;
-  private int location; //argument passed to indexOf that restricts search space. Ideally, we should never call indexOf with this parameter numerically lower than it was before.
   public LevelPack(String path){
     //File IO code copied form Consumer Review Lab
     try{
@@ -18,8 +18,10 @@ public class LevelPack{
       }
       this.global = new Tag(raw, "SokobanLevels");
       this.title = this.global.nextChildTag("Title").toString();
-      this.description = this.global.nextChildTag("Description").toString();
-      this.copyright = this.global.nextChildTag("LevelCollection").parseVariable("Copyright");
+      this.description = this.global.nextChildTag("Description").toString().strip();
+      this.collection = this.global.nextChildTag("LevelCollection");
+      this.copyright = this.collection.parseVariable("Copyright");
+      
     }catch(Exception e){
       System.out.println("Error!");
     }
@@ -27,9 +29,10 @@ public class LevelPack{
   }
   @Override
   public String toString(){
-    return "Title: " + this.title + 
-           "\nDescription: " + this.description +
-           "\nCopyright: " + this.copyright;
+    return this.title + this.description + "\nCopyright: " + this.copyright;
+  }
+  public Tag nextLevel(){
+    return this.collection.nextChildTag("Level");
   }
 } 
 

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class Game {
+  //represents a Game;
   private int level;
   private int maxLevel;
   private boolean done;
