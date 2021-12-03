@@ -8,7 +8,11 @@ public class Frame{
     int width = Integer.parseInt(level.parseVariable("Width"));
     String grid = "";
     for(int i = 0; i < height; i++){
-      grid += level.nextChildTag("L").getBody();
+      String line = level.nextChildTag("L").getBody();
+      while(line < width){
+	  line += " ";
+      }
+      grid += line;
     }
     this.blocks = new Blocks(grid, height, width);
     this.player = new Player(grid, height, width);
