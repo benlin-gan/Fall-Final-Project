@@ -9,7 +9,7 @@ public class Tag{
     int headerEnd = raw.indexOf(">") + 1; //end of current tag
     int footerStart = getFooterStart(raw);
     this.header = raw.substring(0, headerEnd);
-    this.body = raw.substring(headerEnd, footerStart).strip();
+    this.body = raw.substring(headerEnd, footerStart);
     this.footer = raw.substring(footerStart, raw.length());
     this.name = name;
     this.location = 0;

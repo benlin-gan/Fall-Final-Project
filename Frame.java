@@ -9,9 +9,10 @@ public class Frame{
     String grid = "";
     for(int i = 0; i < height; i++){
       String line = level.nextChildTag("L").getBody();
-      while(line < width){
-	  line += " ";
+      while(line.length() < width){
+	      line += " ";
       }
+      System.out.println(line);
       grid += line;
     }
     this.blocks = new Blocks(grid, height, width);
