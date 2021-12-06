@@ -13,7 +13,7 @@ public class Game {
     Scanner stdin = new Scanner(System.in);
     while (!this.done){ 
       clearScreen();
-      System.out.println("SOKOBAN - TTY Edition");
+      System.out.println("SOKOBAN - Console Edition");
       System.out.println(collection.getMetadata()); 
       System.out.println(this.frame);
       System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]");
