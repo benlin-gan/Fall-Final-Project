@@ -1,6 +1,11 @@
+import java.util.Scanner;
 class Main{
   public static void main(String[] args){
-    Game g = new Game("levels/AC_Easy.slc");
+    Scanner stdin = new Scanner(System.in);
+    System.out.println("Select a level collection:");
+    String level = stdin.nextLine().strip();
+    Game g = new Game("levels/" + level);
     g.loop();
+    stdin.close();
   }
 }

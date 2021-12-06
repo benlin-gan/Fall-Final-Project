@@ -1,5 +1,5 @@
 public class Tag{
-  //wrapper around an Xml Tag
+  //wrapper around an XML Tag
   private String header;
   private String body;
   private String footer;

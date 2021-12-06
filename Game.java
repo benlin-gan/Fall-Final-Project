@@ -7,7 +7,6 @@ public class Game {
   public Game(String path) {
     this.collection = new LevelPack(path);
     this.done = false;
-
     this.frame = new Frame(this.collection.nextLevel());
   }
   public void loop(){
