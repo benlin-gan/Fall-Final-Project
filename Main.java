@@ -13,27 +13,28 @@ class Main{
     }catch (Exception e){
       System.out.println("error");
     }
-    boolean valid = false;
     String level = null;
-    while(!valid){
+    boolean done = false;
+    while(!done){
       System.out.println("Select a level collection:");
       System.out.println("Or type [h]elp to list all level names");
+      System.out.println("Or [q]uit");
       String input = stdin.nextLine().strip();
       if(input.equals("h") || input.equals("help")){
         System.out.println(levelNames);
+      }else if(input.equals("q") || input.equals("quit")){
+        done = true;
       }else{
         int location = levelNames.indexOf(input);
         if(levelNames.substring(location-1, location).equals("\n") && levelNames.substring(location + input.length(),location + input.length() + 1).equals("\n")){
           level = input;
-          valid = true;
+          Game g = new Game("levels/" + level, stdin);
+          g.loop();
         }else{
           System.out.println(input + " is not a valid level name");
         }
       }
     }
-    Game g = new Game("levels/" + level);
-    g.loop();
     stdin.close();
-
   }
 }

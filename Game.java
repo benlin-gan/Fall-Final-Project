@@ -4,19 +4,20 @@ public class Game {
   private boolean done;
   private Frame frame;
   private LevelPack collection;
-  public Game(String path) {
+  private Scanner stdin;
+  public Game(String path, Scanner stdin) {
     this.collection = new LevelPack(path);
     this.done = false;
     this.frame = new Frame(this.collection.nextLevel());
+    this.stdin = stdin;
   }
   public void loop(){
-    Scanner stdin = new Scanner(System.in);
     while (!this.done){ 
       clearScreen();
       System.out.println("SOKOBAN - Console Edition");
       System.out.println(collection.getMetadata()); 
       System.out.println(this.frame);
-      System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]");
+      System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]\nreturn to main menu[q]\n");
       if(this.frame.checkVictory()){
         nextLevel();
       }else{
@@ -25,14 +26,14 @@ public class Game {
         if(command.trim().equals("r")){
           //restarts the level, by restoring the level data from file;
           this.frame.restart();
+        }else if(command.trim().equals("q")){
+          this.done = true;
         }
         //using the command, update the frame;
         this.frame.prepareNextFrame(command.trim());
       }
     }
-    stdin.close();
     clearScreen();
-    System.out.println("CONGRATULATIONS! YOU WIN!");
   }
   private void nextLevel(){
     Tag newLevel = this.collection.nextLevel();
