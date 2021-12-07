@@ -8,12 +8,15 @@ public class IntArray{
     this.data = "";
   }
   public void push(int input){
+    //append an integer onto IntArray
     this.data += getRepresentation(input);
   }
   public int at(int index){
+    //return integer stored at indexed
     return Integer.parseInt(data.substring(index * 10, index * 10 + 10));
   }
   private static String getRepresentation(int input){
+    //transfomr the integer into its 10 character representation 
     String prefix = "+";
     if(input < 0){
       prefix = "-";

@@ -6,32 +6,34 @@ public class LevelPack{
   private String title;
   private String description;
   private String copyright;
+  private String email;
+  private String url;
   public LevelPack(String path){
     //File IO code copied form Consumer Review Lab
+    String raw = "";
     try{
       Scanner f = new Scanner(new File(path));
       String xmlHeader = f.nextLine();
-      String raw = "";
       while(f.hasNext()){
         raw += f.nextLine();
         raw += '\n';
       }
-      this.global = new Tag(raw, "SokobanLevels");
-      this.title = this.global.nextChildTag("Title").toString();
-      this.description = this.global.nextChildTag("Description").toString().strip();
-      this.collection = this.global.nextChildTag("LevelCollection");
-      this.copyright = this.collection.parseVariable("Copyright");
-      
     }catch(Exception e){
       System.out.println("Error!");
     }
-    
+    this.global = new Tag(raw, "SokobanLevels");
+    this.title = this.global.nextChildTag("Title").toString();
+    this.description = this.global.nextChildTag("Description").toString().strip();
+    this.collection = this.global.nextChildTag("LevelCollection");
+    this.copyright = this.collection.parseVariable("Copyright");
   }
   public String getMetadata(){
+    //return metadata about the level collection
     return this.title + this.description + "\nCopyright: " + this.copyright;
   }
   public Tag nextLevel(){
+    //return the data for the next level
     return this.collection.nextChildTag("Level");
   }
-} 
+}
 

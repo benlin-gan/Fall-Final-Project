@@ -13,7 +13,7 @@ public class Blocks{
   public Blocks (String grid, int height, int width){   
     this.height = height;
     this.width = width;
-    this.originalState = grid;
+    this.originalState = grid; //store inital state to reload it if restart is called
     initializeGrid(grid);
   }
   public void restart(){

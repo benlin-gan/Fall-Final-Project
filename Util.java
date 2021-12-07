@@ -11,16 +11,13 @@ public class Util{
       e1 = tmp;
       //swaps [b1, e1) and [b2, e2)
       //to ensure that [b1, e1) < [b2, e2)
-    }    
+    }
     String prefix = original.substring(0, b1);
     String sub1 = original.substring(b1, e1);
     String infix = original.substring(e1, b2);
     String sub2 = original.substring(b2, e2);
     String postfix = original.substring(e2, original.length());
-    return prefix + sub2 + infix + sub1 + postfix; 
+    return prefix + sub2 + infix + sub1 + postfix;
     //sub2 swapped with sub1;
   }
-  //public boolean isNotAlpha(ret){
-
-  //}
 }

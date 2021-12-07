@@ -8,20 +8,21 @@ public class Game {
   public Game(String path, Scanner stdin) {
     this.collection = new LevelPack(path);
     this.done = false;
-    this.frame = new Frame(this.collection.nextLevel());
+    this.frame = new Frame(this.collection.nextLevel()); //load first level into frame
     this.stdin = stdin;
+    //instead of making another scanner around System.in, inherit the Scanner from main
   }
   public Scanner loop(){
-    while (!this.done){ 
+    while (!this.done){
       clearScreen();
       System.out.println("SOKOBAN - Console Edition");
-      System.out.println(collection.getMetadata()); 
-      System.out.println(this.frame);
+      System.out.println(collection.getMetadata()); //information about the level
+      System.out.println(this.frame); //the level itself
       System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]\nskip level[n]\nreturn to main menu[q]\n");
       if(this.frame.checkVictory()){
         nextLevel();
       }else{
-        //if no victory yet, ask for a command; 
+        //if no victory yet, ask for a command;
         String command = stdin.next();
         if(command.trim().equals("r")){
           //restarts the level, by restoring the level data from file;
@@ -30,17 +31,20 @@ public class Game {
         //using the command, update the frame;
         if(command.trim().equals("q")){
           this.done = true;
+          //if the user calls, quit, then set the halt condition
         }else if(command.trim().equals("n")){
           nextLevel();
         }else{
+          //if w. a, s, or d, let the frame handle it;
           this.frame.prepareNextFrame(command.trim());
         }
       }
     }
     clearScreen();
-    return stdin;
+    return stdin; //give stdin back to the main method
   }
   private void nextLevel(){
+    //handler for moving onto next level
     Tag newLevel = this.collection.nextLevel();
     if(newLevel == null){
       this.done = true;
@@ -51,7 +55,7 @@ public class Game {
   private void clearScreen(){
     //Uses ANSI escape codes to clear standard output
     //taken from Mastermind
-    System.out.print("\033[H\033[2J");  
+    System.out.print("\033[H\033[2J");
     System.out.flush();
   }
 }

@@ -1,21 +1,22 @@
 public class Player{
-  //Represents the data associated with the player's avatar 
+  //Represents the data associated with the player's avatar
   private int x;
   private int y;
   private int originalX;
   private int originalY;
   public Player(String grid, int height, int width){
     //find the index of the player on the grid and translate it into a coordinate;
-    int index = grid.indexOf("@");
+    int index = grid.indexOf("@"); //@ = player on empty space
     if(index == -1){
-      index = grid.indexOf("+");
+      index = grid.indexOf("+"); //+ = player on destination tile
     }
-    //System.out.println(index);
     this.x = index/width;
     this.y = index % width;
+    //the player does not know the exact index where it is stored.
+    //it cares only about it's x and y positions
     this.originalX = this.x;
     this.originalY = this.y;
-    //System.out.println(this.x + " " + this.y);
+    //originalX and originalY are used to reset the level
   }
   @Override
   public String toString() {
@@ -28,6 +29,7 @@ public class Player{
   }
   public IntArray attemptMove(String command){
     //accessor method that generates the representation of a move command
+    //the result will be eventually sent to the grid which checks this move's validity
     int deltaX = 0;
     int deltaY = 0;
     IntArray attemptedMove = new IntArray();
