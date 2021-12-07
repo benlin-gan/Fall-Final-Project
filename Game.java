@@ -17,7 +17,7 @@ public class Game {
       System.out.println("SOKOBAN - Console Edition");
       System.out.println(collection.getMetadata()); 
       System.out.println(this.frame);
-      System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]\nreturn to main menu[q]\n");
+      System.out.println("up[w]\nleft[a]\ndown[s]\nright[d]\nrestart[r]\nskip level[n]\nreturn to main menu[q]\n");
       if(this.frame.checkVictory()){
         nextLevel();
       }else{
@@ -30,7 +30,8 @@ public class Game {
         //using the command, update the frame;
         if(command.trim().equals("q")){
           this.done = true;
-          break;
+        }else if(command.trim().equals("n")){
+          nextLevel();
         }else{
           this.frame.prepareNextFrame(command.trim());
         }
