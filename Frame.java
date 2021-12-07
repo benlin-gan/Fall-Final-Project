@@ -1,11 +1,14 @@
 public class Frame{
   //Handles the compositing of data from Player, Blocks, and user input in order
   //to update and display the graphics of a level.
+  private String levelName;
   private Player player;
   private Blocks blocks;
+  private static final String SECTION_BREAK = "---------------------------------";
   public Frame(Tag level){
     int height = Integer.parseInt(level.parseVariable("Height"));
     int width = Integer.parseInt(level.parseVariable("Width"));
+    this.levelName = level.parseVariable("Id");
     String grid = "";
     for(int i = 0; i < height; i++){
       String line = level.nextChildTag("L").getBody();
@@ -40,6 +43,8 @@ public class Frame{
   public String toString() {
     //called to display the updated frame;
     String out = "";
+    out += this.levelName + "\n";
+    out += SECTION_BREAK + "\n";
     for(int i = 0; i < this.blocks.getHeight(); i++){
       for(int j = 0; j < this.blocks.getWidth(); j++){
         if(this.player.getX() == i && this.player.getY() == j){
@@ -50,6 +55,7 @@ public class Frame{
       }
       out += "\n";
     }
+    out += SECTION_BREAK;
     return out;
   }
   public boolean checkVictory(){
