@@ -4,6 +4,7 @@ class Main{
   public static void main(String[] args){
     Scanner stdin = new Scanner(System.in);
     String levelNames = "";
+    //File io code taken from consumer reviews lab
     try{
       Scanner names = new Scanner(new File("levelNames.txt"));
       while(names.hasNext()){
@@ -19,20 +20,26 @@ class Main{
       System.out.println("Select a level collection:");
       System.out.println("Or type [h]elp to list all level names");
       System.out.println("Or [q]uit");
-      String input = stdin.nextLine().strip();
+      String input = "";
+      while(input == ""){
+        input = stdin.nextLine().strip();
+      }      
       if(input.equals("h") || input.equals("help")){
         System.out.println(levelNames);
       }else if(input.equals("q") || input.equals("quit")){
         done = true;
       }else{
         int location = levelNames.indexOf(input);
-        if(levelNames.substring(location-1, location).equals("\n") && levelNames.substring(location + input.length(),location + input.length() + 1).equals("\n")){
+
+        if(location != -1 && levelNames.substring(location-1, location).equals("\n") && levelNames.substring(location + input.length(),location + input.length() + 1).equals("\n")){
           level = input;
           Game g = new Game("levels/" + level, stdin);
-          g.loop();
+          stdin = g.loop();
+          level = null;
         }else{
           System.out.println(input + " is not a valid level name");
         }
+        
       }
     }
     stdin.close();

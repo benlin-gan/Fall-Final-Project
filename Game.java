@@ -11,7 +11,7 @@ public class Game {
     this.frame = new Frame(this.collection.nextLevel());
     this.stdin = stdin;
   }
-  public void loop(){
+  public Scanner loop(){
     while (!this.done){ 
       clearScreen();
       System.out.println("SOKOBAN - Console Edition");
@@ -26,14 +26,18 @@ public class Game {
         if(command.trim().equals("r")){
           //restarts the level, by restoring the level data from file;
           this.frame.restart();
-        }else if(command.trim().equals("q")){
-          this.done = true;
         }
         //using the command, update the frame;
-        this.frame.prepareNextFrame(command.trim());
+        if(command.trim().equals("q")){
+          this.done = true;
+          break;
+        }else{
+          this.frame.prepareNextFrame(command.trim());
+        }
       }
     }
     clearScreen();
+    return stdin;
   }
   private void nextLevel(){
     Tag newLevel = this.collection.nextLevel();
@@ -45,7 +49,7 @@ public class Game {
   }
   private void clearScreen(){
     //Uses ANSI escape codes to clear standard output
-    //taken from the Mastermind Lab
+    //taken from Mastermind
     System.out.print("\033[H\033[2J");  
     System.out.flush();
   }
