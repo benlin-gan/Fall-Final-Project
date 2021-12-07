@@ -8,15 +8,15 @@ A Clone of Sokoban written in Fall Semester College Board Subset Java
 
 Levels taken from https://www.sourcecode.se/sokoban/levels
 
-# Prerequisites
+## Prerequisites
 
  - Terminal with UTF-8 Support
  - Java Open SDK-11 or Later
 
-# Compiling
+## Compiling
 
  `javac Main.java`
 
-# Running
+## Running
 
  `java Main`
