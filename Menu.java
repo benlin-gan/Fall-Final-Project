@@ -63,17 +63,18 @@ public class Menu{
     int lineNumber = 1;
     for(int i = 0; i < this.levelNames.length(); i++){
       String curr = this.levelNames.substring(i, i+1);
+      //iterate through all the lines
       if(curr.equals("\n")){
         System.out.println(line);
         line = "";
-        if(lineNumber % 36 == 0){
+        if(lineNumber % 36 == 0){ //every 36 lines, offer a prompt
           System.out.println("press [s] to scroll");
           System.out.println("or return main menu with [q]");
           String command = "";
           while(!command.equals("s")){
             if(command.equals("q")){
               Util.clearScreen();
-              return;
+              return; //early return cause we can't use break;
             }
             command = stdin.nextLine().strip();
           }

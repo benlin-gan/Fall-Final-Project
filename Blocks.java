@@ -81,9 +81,11 @@ public class Blocks{
     }
   }
   public int getWidth(){
+    //getter for width
     return this.width;
   }
   public int getHeight(){
+    //getter for height
     return this.height;
   }
   public boolean checkValidMovement(int oldX, int oldY, int deltaX, int deltaY){

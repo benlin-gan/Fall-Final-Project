@@ -13,14 +13,16 @@ public class Frame{
     for(int i = 0; i < height; i++){
       String line = level.nextChildTag("L").getBody();
       while(line.length() < width){
-	      line += " ";
+	//pad with spaces if grid is not filled
+        line += " ";
       }
-      grid += line;
+      grid += line; //no newline is added
     }
     this.blocks = new Blocks(grid, height, width);
     this.player = new Player(grid, height, width);
   }
   public void restart(){
+    //relay restart signal down
     this.blocks.restart();
     this.player.restart();
   }
@@ -47,6 +49,7 @@ public class Frame{
     for(int i = 0; i < this.blocks.getHeight(); i++){
       for(int j = 0; j < this.blocks.getWidth(); j++){
         if(this.player.getX() == i && this.player.getY() == j){
+          //location of the player overrides whatever is underneath
           out += this.player;
         }else{
           out += this.blocks.getBlockDisplay(i, j);

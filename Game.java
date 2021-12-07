@@ -10,7 +10,7 @@ public class Game {
     this.done = false;
     this.frame = new Frame(this.collection.nextLevel()); //load first level into frame
     this.stdin = stdin;
-    //instead of making another scanner around System.in, inherit the Scanner from main
+    //instead of making another scanner around System.in, inherit the Scanner from Menu
   }
   public Scanner loop(){
     while (!this.done){
@@ -23,7 +23,7 @@ public class Game {
         nextLevel();
       }else{
         //if no victory yet, ask for a command;
-        String command = stdin.next();
+        String command = stdin.nextLine();
         if(command.trim().equals("r")){
           //restarts the level, by restoring the level data from file;
           this.frame.restart();
