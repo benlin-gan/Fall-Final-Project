@@ -29,7 +29,7 @@ public class LevelPack{
   }
   public String getMetadata(){
     //return metadata about the level collection
-    return this.title + this.description + "\nCopyright: " + this.copyright;
+    return this.title + this.description + "\nAuthor: " + this.copyright;
   }
   public Tag nextLevel(){
     //return the data for the next level
