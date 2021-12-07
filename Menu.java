@@ -25,7 +25,6 @@ public class Menu{
   }
   public void loop(){
     //the main menu loop
-    String level = null;
     boolean done = false; //controller variable for the main loop
     while(!done){
       System.out.println("SOKOBAN - Console Edition");
@@ -43,18 +42,23 @@ public class Menu{
         //mark this variable to prepare to quit loop
         done = true;
       }else{
-        int location = this.levelNames.indexOf(input);
-        //make sure the string is in the levelNames, and is bounded on both sides by newlines
-        if(location != -1 && levelNames.substring(location-1, location).equals("\n") && levelNames.substring(location + input.length(),location + input.length() + 1).equals("\n")){
-          level = input;
-          Game g = new Game("levels/" + level, stdin); //pass stdin into game
-          this.stdin = g.loop(); //recieve it back;
-          level = null;
-        }else{
-          System.out.println(input + " is not a valid level collection name.");
-        }
+        initializeGame(input);
       }
     }
+  }
+  private void initializeGame(String input){
+    //pass control flow to game class;
+    String level = null;
+    int location = this.levelNames.indexOf(input);
+    //make sure the string is in the levelNames, and is bounded on both sides by newlines
+    if(location != -1 && this.levelNames.substring(location-1, location).equals("\n") && this.levelNames.substring(location + input.length(),location + input.length() + 1).equals("\n")){
+      level = input;
+      Game g = new Game("levels/" + level, stdin); //pass stdin into game
+      this.stdin = g.loop(); //recieve it back;
+      level = null;
+    }else{
+       System.out.println(input + " is not a valid level collection name.");
+     }
   }
   private void listLevelNames(){
     //list the names of the files
