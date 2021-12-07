@@ -8,6 +8,10 @@ A Clone of Sokoban written in Fall Semester College Board Subset Java
 
 Levels taken from https://www.sourcecode.se/sokoban/levels
 
+Most Unicode characters are from the "Miscellaneous_Symbols" block: 
+
+https://en.wikipedia.org/wiki/Miscellaneous_Symbols
+
 ## Prerequisites
 
  - Terminal with UTF-8 Support
@@ -20,3 +24,8 @@ Levels taken from https://www.sourcecode.se/sokoban/levels
 ## Running
 
  `java Main`
+ 
+## Adding Custom Levels
+ 
+ - Copy an slc (Sokoban Level Collection) file into the levels folder
+ - Add the level name to levelNames.txt (ensure that a newline is before and after it)
