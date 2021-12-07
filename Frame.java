@@ -4,7 +4,7 @@ public class Frame{
   private String levelName;
   private Player player;
   private Blocks blocks;
-  private static final String SECTION_BREAK = "---------------------------------";
+  private static final String SECTION_BREAK = "-----------------------------------------------------------------";
   public Frame(Tag level){
     int height = Integer.parseInt(level.parseVariable("Height"));
     int width = Integer.parseInt(level.parseVariable("Width"));

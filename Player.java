@@ -10,14 +10,16 @@ public class Player{
     if(index == -1){
       index = grid.indexOf("+");
     }
-    this.x = index/height;
+    //System.out.println(index);
+    this.x = index/width;
     this.y = index % width;
     this.originalX = this.x;
     this.originalY = this.y;
+    //System.out.println(this.x + " " + this.y);
   }
   @Override
   public String toString() {
-    return "\u26d1 "; //unicode road (looks like a person witha hardhat)
+    return "\u26d1 "; //unicode road (looks like a person with a hardhat)
   }
   public void restart(){
     //mutator method resetting player to original location;
