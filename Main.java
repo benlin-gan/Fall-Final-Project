@@ -30,17 +30,21 @@ class Main{
       }
       if(input.equals("h") || input.equals("help")){
         String line = "";
+        int lineNumber = 1;
         for(int i = 0; i < levelNames.length(); i++){
           String curr = levelNames.substring(i, i+1);
           if(curr.equals("\n")){
             System.out.println(line);
             line = "";
-            try{
-              //wait 0.1 seconds in order to let the user see all the level collection  names
-              Thread.sleep(100);
-            }catch(Exception e){
-              Thread.currentThread().interrupt();
+            if(lineNumber % 36 == 0){
+              System.out.println("press [s] to scroll");
+              String command = "";
+              while(!command.equals("s")){
+                command = stdin.nextLine().strip();
+              }
+              Util.clearScreen();
             }
+            lineNumber++;
           }else{
             line += curr;
           }

@@ -20,4 +20,11 @@ public class Util{
     return prefix + sub2 + infix + sub1 + postfix;
     //sub2 swapped with sub1;
   }
+  public static void clearScreen(){
+    //uses ANSI escape codes to clear the terminal
+    //taken from Mastermind
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
+
 }

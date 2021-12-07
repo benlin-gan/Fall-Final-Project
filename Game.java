@@ -14,7 +14,7 @@ public class Game {
   }
   public Scanner loop(){
     while (!this.done){
-      clearScreen();
+      Util.clearScreen();
       System.out.println("SOKOBAN - Console Edition");
       System.out.println(collection.getMetadata()); //information about the level
       System.out.println(this.frame); //the level itself
@@ -40,7 +40,7 @@ public class Game {
         }
       }
     }
-    clearScreen();
+    Util.clearScreen();
     return stdin; //give stdin back to the main method
   }
   private void nextLevel(){
@@ -51,11 +51,5 @@ public class Game {
     }else{
       frame = new Frame(newLevel);
     }
-  }
-  private void clearScreen(){
-    //Uses ANSI escape codes to clear standard output
-    //taken from Mastermind
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
   }
 }
