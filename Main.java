@@ -2,9 +2,16 @@ import java.util.Scanner;
 import java.io.File;
 class Main{
   //Represents the main menu
+  Scanner stdin;
+  String levelNames;
   public static void main(String[] args){
     Scanner stdin = new Scanner(System.in);
-    String levelNames = "";
+    String levelNames = getLevelNames();
+    stdin = loop(levelNames, stdin);
+    stdin.close();
+  }
+  private static String getLevelNames(){
+     String levelNames = "";
     //File IO code taken from consumer reviews lab
     try{
       //dump levelNames.txt into a String
@@ -16,6 +23,10 @@ class Main{
     }catch (Exception e){
       System.out.println("Error!");
     }
+    return levelNames;
+  }
+  private static Scanner loop(String levelNames, Scanner stdin){
+    //the main menu loop
     String level = null;
     boolean done = false; //controller variable for the main loop
     while(!done){
@@ -29,26 +40,7 @@ class Main{
         //reject empty line input
       }
       if(input.equals("h") || input.equals("help")){
-        String line = "";
-        int lineNumber = 1;
-        for(int i = 0; i < levelNames.length(); i++){
-          String curr = levelNames.substring(i, i+1);
-          if(curr.equals("\n")){
-            System.out.println(line);
-            line = "";
-            if(lineNumber % 36 == 0){
-              System.out.println("press [s] to scroll");
-              String command = "";
-              while(!command.equals("s")){
-                command = stdin.nextLine().strip();
-              }
-              Util.clearScreen();
-            }
-            lineNumber++;
-          }else{
-            line += curr;
-          }
-        }
+       listLevelNames(levelNames, stdin);
       }else if(input.equals("q") || input.equals("quit")){
         //mark this variable to prepare to quit loop
         done = true;
@@ -65,6 +57,35 @@ class Main{
         }
       }
     }
-    stdin.close();
+    return stdin;
+  }
+  private static Scanner listLevelNames(String levelNames, Scanner stdin){
+    Util.clearScreen();
+    String line = "";
+    int lineNumber = 1;
+    for(int i = 0; i < levelNames.length(); i++){
+      String curr = levelNames.substring(i, i+1);
+      if(curr.equals("\n")){
+        System.out.println(line);
+        line = "";
+        if(lineNumber % 36 == 0){
+          System.out.println("press [s] to scroll");
+          System.out.println("or return main menu with [q]");
+          String command = "";
+          while(!command.equals("s")){
+            if(command.equals("q")){
+              return stdin;
+            }
+            command = stdin.nextLine().strip();
+          }
+          Util.clearScreen();
+        }
+        lineNumber++;
+      }else{
+        line += curr;
+      }
+    }
+    return stdin;
   }
 }
+
