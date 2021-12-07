@@ -1,7 +1,8 @@
 public class Blocks{
-  private int width; 
+  //Stores the data representing the grid of blocks itself
+  private int width;
   private int height;
-  private String blocking; 
+  private String blocking;
   private String moveable;
   private String destination;
   private String originalState;
@@ -10,7 +11,7 @@ public class Blocks{
     //representing the index of the String we actually want;
     return x * this.width + y;
   }
-  public Blocks (String grid, int height, int width){   
+  public Blocks (String grid, int height, int width){
     this.height = height;
     this.width = width;
     this.originalState = grid; //store inital state to reload it if restart is called
@@ -31,7 +32,7 @@ public class Blocks{
         String curr = grid.substring(k, k+1);
         //System.out.print(curr);
         if(curr.equals("$")){
-          //a box that blocks movement, is moveable, and is not on a destination 
+          //a box that blocks movement, is moveable, and is not on a destination
           blocking += "1";
           moveable += "1";
           destination += "0";
@@ -115,7 +116,7 @@ public class Blocks{
           //There is no grid iteration here, it just goes through every character; newlines are ignored because of the first if statement;
           return false;
         }
-      } 
+      }
     }
     return true;
   }

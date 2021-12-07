@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 class Main{
+  //Represents the nain nenu
   public static void main(String[] args){
     Scanner stdin = new Scanner(System.in);
     String levelNames = "";

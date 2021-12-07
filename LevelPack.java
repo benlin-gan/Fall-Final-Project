@@ -1,13 +1,12 @@
 import java.util.Scanner;
 import java.io.File;
 public class LevelPack{
+  //Data Class representing a collection of levels
   private Tag global; //Aka "SokobanLevels", outermost tag that wraps all others;
   private Tag collection; //Aka "LevelCollection", immediate parent tag of all the levels;
   private String title;
   private String description;
   private String copyright;
-  private String email;
-  private String url;
   public LevelPack(String path){
     //File IO code copied form Consumer Review Lab
     String raw = "";
