@@ -15,7 +15,6 @@ public class Frame{
       while(line.length() < width){
 	      line += " ";
       }
-      System.out.println(line);
       grid += line;
     }
     this.blocks = new Blocks(grid, height, width);
